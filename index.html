@@ -5,21 +5,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manuka Madhu - Software Developer</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background-color: #007bff;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #343a40;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: #495057;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 5px 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h1 class="fade-in">Manuka Madhu</h1>
-            <p class="fade-in delay-1s">Software Developer</p>
+            <h1>Manuka Madhu</h1>
+            <p>Software Developer</p>
         </header>
-        <section class="about fade-in delay-2s">
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <section id="about">
             <h2>About Me</h2>
             <p>I am a passionate software developer with expertise in HTML, CSS, JavaScript, and other modern web
-                technologies.</p>
+                technologies. I enjoy building dynamic and responsive web applications and am always eager to learn new
+                technologies and improve my skills.</p>
         </section>
-        <section class="skills fade-in delay-3s">
+        <section id="skills">
             <h2>Skills</h2>
             <ul>
                 <li>HTML</li>
@@ -27,13 +114,74 @@
                 <li>JavaScript</li>
                 <li>React</li>
                 <li>Node.js</li>
+                <li>Python</li>
+                <li>Git & GitHub</li>
             </ul>
         </section>
-        <section class="contact fade-in delay-4s">
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li><a href="https://github.com/yourusername/project1">Project 1</a> - A web application built with
+                    React
+                    and Node.js.</li>
+                <li><a href="https://github.com/yourusername/project2">Project 2</a> - A responsive website created
+                    using
+                    HTML, CSS, and JavaScript.</li>
+                <li><a href="https://github.com/yourusername/project3">Project 3</a> - A Python script for data analysis
+                    and visualization.</li>
+            </ul>
+        </section>
+        <section id="experience">
+            <h2>Experience</h2>
+            <p><strong>Software Developer at XYZ Company (Jan 2020 - Present)</strong></p>
+            <ul>
+                <li>Developed and maintained web applications using React and Node.js.</li>
+                <li>Collaborated with cross-functional teams to deliver high-quality software solutions.</li>
+                <li>Implemented best practices for code quality and performance optimization.</li>
+            </ul>
+            <p><strong>Intern at ABC Corporation (Jun 2019 - Dec 2019)</strong></p>
+            <ul>
+                <li>Assisted in the development of a mobile application using React Native.</li>
+                <li>Contributed to front-end design and implementation using HTML, CSS, and JavaScript.</li>
+            </ul>
+        </section>
+        <section id="education">
+            <h2>Education</h2>
+            <p><strong>Bachelor of Science in Computer Science, University of Technology (2016 - 2020)</strong></p>
+        </section>
+        <section id="contact">
             <h2>Contact</h2>
             <p>Email: <a href="mailto:manuka.madhu@example.com">manuka.madhu@example.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/yourusername"
+                    target="_blank">linkedin.com/in/yourusername</a></p>
+            <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
         </section>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("section");
+            const options = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.4
+            };
+
+            const callback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    } else {
+                        entry.target.classList.remove("visible");
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(callback, options);
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 
 </html>
